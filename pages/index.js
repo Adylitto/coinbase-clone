@@ -1,12 +1,16 @@
 import styled from 'styled-components'
 import { useWeb3 } from '@3rdweb/hooks'
 import Dashboard from './Dashboard'
+import Image from 'next/image'
 
 export default function Home() {
   const { address, connectWallet } = useWeb3()
 
-  return (
-    <Wrapper>
+  return (      
+
+    <Wrapper>  
+      <FeatImg></FeatImg>
+
       {address ? (
         <Dashboard address={address} />
       ) : (
@@ -17,7 +21,7 @@ export default function Home() {
           <Details>
             You need Chrome to be
             <br /> able to run this app.
-          </Details>
+          </Details>  
         </WalletConnect>
       )}
     </Wrapper>
@@ -28,7 +32,6 @@ const Wrapper = styled.div`
   display: flex;
   height: 100vh;
   max-width: 100vw;
-  background-color: #0a0b0d;
   color: white;
   display: grid;
   place-items: center;
@@ -45,21 +48,33 @@ const Button = styled.div`
   /* flex: 0; */
   border: 1px solid #282b2f;
   padding: 0.8rem;
-  font-size: 1.3rem;
+  font-size: 2.3rem;
+  color:white;
   font-weight: 500;
   border-radius: 0.4rem;
   background-color: #3773f5;
-  color: #000;
+  z-index: 1;
 
   &:hover {
+    background-color: green;
     cursor: pointer;
   }
 `
-
 const Details = styled.div`
-  font-size: 1.2rem;
+  font-size: 2rem;
   text-align: center;
   margin-top: 1rem;
   font-weight: 500;
-  color: #282b2f;
+  color: green;
+  z-index: 1;
+`
+const FeatImg = styled.div`
+  position: absolute;
+  display: block;
+  margin:auto;
+  background-image:url("https://www.adyl.dev/static/media/coinbase-app.e5bc4674.png");
+  background-repeat: no-repeat;
+  background-size:contain ; 
+  height:100vh;
+  width: 100vw;
 `
